@@ -52,6 +52,8 @@ class Main {
 }
 ```
 
+### Kotlin
+
 ```kotlin
 fun main() {
     val map: TicTacToe = Pos.values().associateWith { null } // null = empty
