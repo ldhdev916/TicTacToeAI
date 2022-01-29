@@ -47,7 +47,7 @@ class Main {
             map.put(value, null); // null = empty
         }
 
-        System.out.println(TIcTacToeAIKt.getBestMove(map, TicTacToeMove.O));
+        System.out.println(TicTacToeAI.getBestMove(map, TicTacToeMove.O));
     }
 }
 ```
