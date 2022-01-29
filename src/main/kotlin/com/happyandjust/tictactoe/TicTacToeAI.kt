@@ -1,4 +1,5 @@
 @file:JvmName("TicTacToeAI")
+
 package com.happyandjust.tictactoe
 
 private val possibleLines = hashSetOf(
@@ -13,6 +14,20 @@ private val possibleLines = hashSetOf(
     setOf(Pos.TOP_LEFT, Pos.CENTER, Pos.BOTTOM_RIGHT),
     setOf(Pos.TOP_RIGHT, Pos.CENTER, Pos.BOTTOM_LEFT)
 )
+
+fun TicTacToe.toTicTacToeString(): String {
+    val values = Pos.values().toList().chunked(3)
+
+    return values.joinToString("\n") {
+        it.joinToString(" ") { pos ->
+            when (getValue(pos)) {
+                TicTacToeMove.O -> "O"
+                TicTacToeMove.X -> "X"
+                else -> "."
+            }
+        }
+    }
+}
 
 fun TicTacToe.getBestMove(nextMove: TicTacToeMove): Pos {
     val copy = toMutableMap()
@@ -36,7 +51,7 @@ fun TicTacToe.getBestMove(nextMove: TicTacToeMove): Pos {
             val value = miniMax(currentMove.getOpposite(), remainCount - 1)
             copy[it] = null
 
-            if((pickMax && value == Int.MAX_VALUE) || (!pickMax && value == Int.MIN_VALUE)) {
+            if ((pickMax && value == Int.MAX_VALUE) || (!pickMax && value == Int.MIN_VALUE)) {
                 bestMove = it
                 return value
             }
