@@ -18,6 +18,14 @@ private val possibleLines = hashSetOf(
     setOf(Pos.TOP_RIGHT, Pos.CENTER, Pos.BOTTOM_LEFT)
 )
 
+@JsName("getCurrentState")
+fun TicTacToe.getCurrentState(forMove: TicTacToeMove) = when {
+    possibleLines.any { line -> line.all { getValue(it) == forMove } } -> State.WIN
+    possibleLines.any { line -> line.all { getValue(it) == forMove.getOpposite() } } -> State.LOSE
+    values.any { it == null } -> null
+    else -> State.TIE
+}
+
 @JsName("toTicTacToeString")
 fun TicTacToe.toTicTacToeString(): String {
     val values = Pos.values().toList().chunked(3)
