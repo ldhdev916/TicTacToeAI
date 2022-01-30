@@ -66,4 +66,4 @@ fun main() {
 }
 ```
 
-Result -> `Center`
+Result -> `Pos.CENTER`
