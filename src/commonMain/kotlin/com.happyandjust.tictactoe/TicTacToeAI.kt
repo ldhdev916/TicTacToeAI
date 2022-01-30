@@ -2,6 +2,9 @@
 
 package com.happyandjust.tictactoe
 
+import kotlin.js.JsName
+import kotlin.jvm.JvmName
+
 private val possibleLines = hashSetOf(
     setOf(Pos.TOP_LEFT, Pos.TOP_CENTER, Pos.TOP_RIGHT),
     setOf(Pos.LEFT, Pos.CENTER, Pos.RIGHT),
@@ -15,6 +18,7 @@ private val possibleLines = hashSetOf(
     setOf(Pos.TOP_RIGHT, Pos.CENTER, Pos.BOTTOM_LEFT)
 )
 
+@JsName("toTicTacToeString")
 fun TicTacToe.toTicTacToeString(): String {
     val values = Pos.values().toList().chunked(3)
 
@@ -29,6 +33,7 @@ fun TicTacToe.toTicTacToeString(): String {
     }
 }
 
+@JsName("getBestMove")
 fun TicTacToe.getBestMove(nextMove: TicTacToeMove): Pos {
     val copy = toMutableMap()
     val remainMoves = copy.values.count { it == null }
@@ -79,3 +84,4 @@ private fun TicTacToe.evaluate(myMove: TicTacToeMove): Int {
 }
 
 typealias TicTacToe = Map<Pos, TicTacToeMove?>
+

@@ -1,7 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("multiplatform") version "1.6.10"
     `maven-publish`
 }
 
@@ -12,32 +10,20 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-
-}
-
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-val sourceJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
+kotlin {
+    jvm()
+    js()
 }
 
 publishing {
     repositories {
         maven {
-            /* credentials */
+            credentials {
+                username = System.getProperty("username")
+                password = System.getProperty("password")
+            }
 
             url = uri("https://repsy.io/mvn/happyandjust/repo")
-        }
-    }
-    publications {
-        register("mavenJava", MavenPublication::class) {
-            from(components["java"])
-            artifact(sourceJar.get())
         }
     }
 }

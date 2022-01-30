@@ -8,5 +8,5 @@ enum class TicTacToeMove {
         override fun getOpposite() = O
     };
 
-    abstract fun getOpposite(): TicTacToeMove;
+    abstract fun getOpposite(): TicTacToeMove
 }
