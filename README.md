@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.happyandjust:TicTacToeAI:1.0.0'
+    implementation 'com.happyandjust:$artifact:$version'
 }
 ```
 
@@ -28,9 +28,14 @@ repositories {
 }
 
 dependencies {
-    implementation("com.happyandjust:TicTacToeAI:1.0.0")
+    implementation("com.happyandjust:$artifact:$version")
 }
 ```
+
+| Platform        | artifact       | version |
+|-----------------|----------------|---------|
+| Java/Kotlin JVM | TicTacToeAI    | 1.0.0   |
+| Kotlin JS       | TicTacToeAI-js | 1.0.0   |
 
 ## Usage
 
